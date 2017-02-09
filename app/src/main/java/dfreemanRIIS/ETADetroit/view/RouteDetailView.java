@@ -10,6 +10,7 @@ import android.database.Cursor;
 
 import dfreemanRIIS.ETADetroit.R;
 import dfreemanRIIS.ETADetroit.interactor.GetRouteDetailInteractor;
+import dfreemanRIIS.ETADetroit.interactor.GetRouteStopsInteractor;
 import dfreemanRIIS.ETADetroit.viewEntity.RouteDetailViewEntity;
 
 public class RouteDetailView extends Activity implements RouteDetailViewEntity {
@@ -25,9 +26,9 @@ public class RouteDetailView extends Activity implements RouteDetailViewEntity {
     }
 
     public void setup() {
-        GetRouteDetailInteractor presenter = new GetRouteDetailInteractor();
+        GetRouteDetailInteractor getRouteDetailInteractor = new GetRouteDetailInteractor();
         String thisRoute = (String)getIntent().getExtras().get(EXTRA_ROUTE_NAME);
-        Cursor details = presenter.getRouteDetails(thisRoute, this);
+        Cursor details = getRouteDetailInteractor.getRouteDetails(thisRoute, this);
 
         if(details.moveToFirst()) {
             TextView textView1 = (TextView)findViewById(R.id.listDetails);
@@ -40,7 +41,8 @@ public class RouteDetailView extends Activity implements RouteDetailViewEntity {
             textView1.setText(placeHolder1);
         }
 
-        Cursor stops = presenter.getRouteStops(details.getString(3), this);
+        GetRouteStopsInteractor getRouteStopsInteractor = new GetRouteStopsInteractor();
+        Cursor stops = getRouteStopsInteractor.getRouteStops(details.getString(3), this);
         CursorAdapter listAdapter = new SimpleCursorAdapter(this,
                 android.R.layout.simple_list_item_1,
                 stops,

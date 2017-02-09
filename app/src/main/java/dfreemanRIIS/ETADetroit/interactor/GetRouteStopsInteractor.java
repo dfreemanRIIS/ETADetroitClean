@@ -5,11 +5,10 @@ import android.database.Cursor;
 
 import dfreemanRIIS.ETADetroit.repository.Repository;
 
-public class GetRouteDetailInteractor {
+public class GetRouteStopsInteractor {
 
-    public Cursor getRouteDetails(String routeName, Context context) {
+    public Cursor getRouteStops(String route_id, Context context) {
         Repository repository = new Repository();
-        return repository.getRouteDetails(routeName, context);
+        return repository.getRouteStops(route_id, context);
     }
-
 }
