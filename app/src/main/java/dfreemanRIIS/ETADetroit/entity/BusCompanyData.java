@@ -8,7 +8,7 @@ import dfreemanRIIS.ETADetroit.presenter.Presenter;
 
 public class BusCompanyData {
 
-    private final String[] placeNameArray = new String[3];
+    private final String[] placeNameArray = new String[4];
 
     public BusCompanyData(Context context) {
         Presenter presenter = new Presenter();
