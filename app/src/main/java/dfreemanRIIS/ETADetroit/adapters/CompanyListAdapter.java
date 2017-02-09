@@ -18,22 +18,22 @@ import dfreemanRIIS.ETADetroit.entity.BusCompany;
 import dfreemanRIIS.ETADetroit.entity.BusCompanyData;
 import dfreemanRIIS.ETADetroit.R;
 
-public class TravelListAdapter extends RecyclerView.Adapter<TravelListAdapter.ViewHolder> {
+public class CompanyListAdapter extends RecyclerView.Adapter<CompanyListAdapter.ViewHolder> {
 
     private final Context mContext;
     private OnItemClickListener mItemClickListener;
 
-    public TravelListAdapter(Context context) {
+    public CompanyListAdapter(Context context) {
         this.mContext = context;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public final LinearLayout placeHolder;
-        public final LinearLayout placeNameHolder;
-        public final TextView placeName;
-        public final ImageView placeImage;
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        final LinearLayout placeHolder;
+        final LinearLayout placeNameHolder;
+        final TextView placeName;
+        final ImageView placeImage;
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
             placeHolder = (LinearLayout) itemView.findViewById(R.id.mainHolder);
             placeName = (TextView) itemView.findViewById(R.id.placeName);

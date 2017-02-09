@@ -18,7 +18,7 @@ import android.support.v4.util.Pair;
 import android.widget.Toolbar;
 
 import dfreemanRIIS.ETADetroit.R;
-import dfreemanRIIS.ETADetroit.adapters.TravelListAdapter;
+import dfreemanRIIS.ETADetroit.adapters.CompanyListAdapter;
 
 public class MainView extends Activity {
 
@@ -35,14 +35,14 @@ public class MainView extends Activity {
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.list);
         mStaggeredLayoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(mStaggeredLayoutManager);
-        TravelListAdapter mAdapter = new TravelListAdapter(this);
+        CompanyListAdapter mAdapter = new CompanyListAdapter(this);
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.setOnItemClickListener(onItemClickListener);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setUpActionBar();
     }
 
-    private final TravelListAdapter.OnItemClickListener onItemClickListener = new TravelListAdapter.OnItemClickListener() {
+    private final CompanyListAdapter.OnItemClickListener onItemClickListener = new CompanyListAdapter.OnItemClickListener() {
         @Override
         public void onItemClick(View v, int position) {
             Intent transitionIntent = new Intent(MainView.this, CompanyView.class);
