@@ -1,11 +1,11 @@
-package dfreemanRIIS.ETADetroit.presenter;
+package dfreemanRIIS.ETADetroit.interactor;
 
 import android.content.Context;
 import android.database.Cursor;
 
-import dfreemanRIIS.ETADetroit.model.DatabaseHelper;
+import dfreemanRIIS.ETADetroit.entity.DatabaseHelper;
 
-public class BusCompanyPresenter {
+public class GetCompanyInteractor {
 
     public Cursor getCompanies(Context context) {
         DatabaseHelper databaseHelper = new DatabaseHelper(context);

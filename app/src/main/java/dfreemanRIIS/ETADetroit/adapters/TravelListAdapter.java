@@ -14,8 +14,8 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import dfreemanRIIS.ETADetroit.model.BusCompany;
-import dfreemanRIIS.ETADetroit.model.BusCompanyData;
+import dfreemanRIIS.ETADetroit.entity.BusCompany;
+import dfreemanRIIS.ETADetroit.entity.BusCompanyData;
 import dfreemanRIIS.ETADetroit.R;
 
 public class TravelListAdapter extends RecyclerView.Adapter<TravelListAdapter.ViewHolder> {

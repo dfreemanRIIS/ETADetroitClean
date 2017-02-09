@@ -1,17 +1,17 @@
-package dfreemanRIIS.ETADetroit.model;
+package dfreemanRIIS.ETADetroit.entity;
 
 import android.content.Context;
 import android.database.Cursor;
 import java.util.ArrayList;
 
-import dfreemanRIIS.ETADetroit.presenter.BusCompanyPresenter;
+import dfreemanRIIS.ETADetroit.interactor.GetCompanyInteractor;
 
 public class BusCompanyData {
 
     private final String[] placeNameArray = new String[3];
 
     public BusCompanyData(Context context) {
-        BusCompanyPresenter presenter = new BusCompanyPresenter();
+        GetCompanyInteractor presenter = new GetCompanyInteractor();
         Cursor companyCursor = presenter.getCompanies(context);
 
         if(companyCursor.moveToFirst()) {

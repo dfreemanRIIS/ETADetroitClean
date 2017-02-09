@@ -1,4 +1,4 @@
-package dfreemanRIIS.ETADetroit.acitivity;
+package dfreemanRIIS.ETADetroit.view;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -20,7 +20,7 @@ import android.widget.Toolbar;
 import dfreemanRIIS.ETADetroit.R;
 import dfreemanRIIS.ETADetroit.adapters.TravelListAdapter;
 
-public class MainActivity extends Activity {
+public class MainView extends Activity {
 
     private Menu menu;
     private boolean isListView;
@@ -45,8 +45,8 @@ public class MainActivity extends Activity {
     private final TravelListAdapter.OnItemClickListener onItemClickListener = new TravelListAdapter.OnItemClickListener() {
         @Override
         public void onItemClick(View v, int position) {
-            Intent transitionIntent = new Intent(MainActivity.this, CompanyActivity.class);
-            transitionIntent.putExtra(CompanyActivity.EXTRA_PARAM_ID, position);
+            Intent transitionIntent = new Intent(MainView.this, CompanyView.class);
+            transitionIntent.putExtra(CompanyView.EXTRA_PARAM_ID, position);
             ImageView placeImage = (ImageView) v.findViewById(R.id.placeImage);
             LinearLayout placeNameHolder = (LinearLayout) v.findViewById(R.id.placeNameHolder);
             View navigationBar = findViewById(android.R.id.navigationBarBackground);
@@ -57,9 +57,9 @@ public class MainActivity extends Activity {
                     Window.NAVIGATION_BAR_BACKGROUND_TRANSITION_NAME);
             Pair<View, String> statusPair = Pair.create(statusBar, Window.STATUS_BAR_BACKGROUND_TRANSITION_NAME);
             Pair<View, String> toolbarPair = Pair.create((View)toolbar, "tActionBar");
-            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(MainActivity.this,
+            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(MainView.this,
                     imagePair, holderPair, navPair, statusPair, toolbarPair);
-            ActivityCompat.startActivity(MainActivity.this, transitionIntent, options.toBundle());
+            ActivityCompat.startActivity(MainView.this, transitionIntent, options.toBundle());
         }
     };
     

@@ -1,4 +1,4 @@
-package dfreemanRIIS.ETADetroit.model;
+package dfreemanRIIS.ETADetroit.entity;
 
 import android.content.Context;
 import android.database.Cursor;

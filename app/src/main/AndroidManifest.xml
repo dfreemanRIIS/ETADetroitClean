@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
-            android:name="dfreemanRIIS.ETADetroit.acitivity.MainActivity"
+            android:name="dfreemanRIIS.ETADetroit.view.MainView"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,9 +23,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="dfreemanRIIS.ETADetroit.acitivity.CompanyActivity"
+            android:name="dfreemanRIIS.ETADetroit.view.CompanyView"
             android:screenOrientation="portrait"/>
-        <activity android:name="dfreemanRIIS.ETADetroit.acitivity.RouteDetailActivity"/>
+        <activity android:name="dfreemanRIIS.ETADetroit.view.RouteDetailView"/>
     </application>
 
 </manifest>
