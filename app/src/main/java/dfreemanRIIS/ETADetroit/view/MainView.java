@@ -43,7 +43,7 @@ public class MainView extends Activity {
         @Override
         public void onItemClick(View v, int position) {
             MainViewPresenter mainViewPresenter = new MainViewPresenter();
-            mainViewPresenter.present(context, v, position, toolbar, MainView.this);
+            mainViewPresenter.present(context, v, position, MainView.this);
         }
     };
 

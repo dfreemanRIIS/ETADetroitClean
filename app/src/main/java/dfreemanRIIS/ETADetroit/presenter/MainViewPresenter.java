@@ -45,7 +45,7 @@ public class MainViewPresenter {
         return getTrainCompanyNameInteractor.getTrainCompanyName(position, context);
     }
 
-    public void present(Context context, View v, int position, Toolbar toolbar, Context mainViewContext) {
+    public void present(Context context, View v, int position, Context mainViewContext) {
         if (isTrain(position, context)) {
             Intent intent = new Intent(mainViewContext, RouteDetailView.class);
             intent.putExtra(RouteDetailView.EXTRA_ROUTE_NAME, getTrainRouteName(getTrainCompanyName(position, context), context));
@@ -59,11 +59,7 @@ public class MainViewPresenter {
             View statusBar = v.findViewById(android.R.id.statusBarBackground);
             Pair<View, String> imagePair = Pair.create((View) placeImage, "tImage");
             Pair<View, String> holderPair = Pair.create((View) placeNameHolder, "tNameHolder");
-            Pair<View, String> navPair = Pair.create(navigationBar,
-                    Window.NAVIGATION_BAR_BACKGROUND_TRANSITION_NAME);
-            Pair<View, String> statusPair = Pair.create(statusBar, Window.STATUS_BAR_BACKGROUND_TRANSITION_NAME);
-            Pair<View, String> toolbarPair = Pair.create((View) toolbar, "tActionBar");
-            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity)mainViewContext, imagePair);
+            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity)mainViewContext, imagePair, holderPair);
             ActivityCompat.startActivity(mainViewContext, transitionIntent, options.toBundle());
         }
     }

@@ -11,5 +11,4 @@ public class CompanyViewPresetner {
         GetAllRouteInteractor getAllRouteInteractor = new GetAllRouteInteractor();
         return getAllRouteInteractor.getAllRoute(companyName, context);
     }
-
 }
