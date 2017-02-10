@@ -45,21 +45,27 @@ public class MainView extends Activity {
     private final CompanyListAdapter.OnItemClickListener onItemClickListener = new CompanyListAdapter.OnItemClickListener() {
         @Override
         public void onItemClick(View v, int position) {
-            Intent transitionIntent = new Intent(MainView.this, CompanyView.class);
-            transitionIntent.putExtra(CompanyView.EXTRA_PARAM_ID, position);
-            ImageView placeImage = (ImageView) v.findViewById(R.id.placeImage);
-            LinearLayout placeNameHolder = (LinearLayout) v.findViewById(R.id.placeNameHolder);
-            View navigationBar = findViewById(android.R.id.navigationBarBackground);
-            View statusBar = findViewById(android.R.id.statusBarBackground);
-            Pair<View, String> imagePair = Pair.create((View) placeImage, "tImage");
-            Pair<View, String> holderPair = Pair.create((View) placeNameHolder, "tNameHolder");
-            Pair<View, String> navPair = Pair.create(navigationBar,
-                    Window.NAVIGATION_BAR_BACKGROUND_TRANSITION_NAME);
-            Pair<View, String> statusPair = Pair.create(statusBar, Window.STATUS_BAR_BACKGROUND_TRANSITION_NAME);
-            Pair<View, String> toolbarPair = Pair.create((View)toolbar, "tActionBar");
-            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(MainView.this,
-                    imagePair, holderPair, navPair, statusPair, toolbarPair);
-            ActivityCompat.startActivity(MainView.this, transitionIntent, options.toBundle());
+            if(position == 3) {
+                Intent intent = new Intent(MainView.this, RouteDetailView.class);
+                intent.putExtra(RouteDetailView.EXTRA_ROUTE_NAME, "People Mover");
+                startActivity(intent);
+            } else {
+                Intent transitionIntent = new Intent(MainView.this, CompanyView.class);
+                transitionIntent.putExtra(CompanyView.EXTRA_PARAM_ID, position);
+                ImageView placeImage = (ImageView) v.findViewById(R.id.placeImage);
+                LinearLayout placeNameHolder = (LinearLayout) v.findViewById(R.id.placeNameHolder);
+                View navigationBar = findViewById(android.R.id.navigationBarBackground);
+                View statusBar = findViewById(android.R.id.statusBarBackground);
+                Pair<View, String> imagePair = Pair.create((View) placeImage, "tImage");
+                Pair<View, String> holderPair = Pair.create((View) placeNameHolder, "tNameHolder");
+                Pair<View, String> navPair = Pair.create(navigationBar,
+                        Window.NAVIGATION_BAR_BACKGROUND_TRANSITION_NAME);
+                Pair<View, String> statusPair = Pair.create(statusBar, Window.STATUS_BAR_BACKGROUND_TRANSITION_NAME);
+                Pair<View, String> toolbarPair = Pair.create((View) toolbar, "tActionBar");
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(MainView.this,
+                        imagePair, holderPair, navPair, statusPair, toolbarPair);
+                ActivityCompat.startActivity(MainView.this, transitionIntent, options.toBundle());
+            }
         }
     };
     
