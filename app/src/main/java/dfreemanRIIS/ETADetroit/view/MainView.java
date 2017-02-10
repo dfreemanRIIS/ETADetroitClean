@@ -52,7 +52,7 @@ public class MainView extends Activity {
             MainViewPresenter mainViewPresenter = new MainViewPresenter();
             if(mainViewPresenter.isTrain(position, context)) {
                 Intent intent = new Intent(MainView.this, RouteDetailView.class);
-                intent.putExtra(RouteDetailView.EXTRA_ROUTE_NAME, "People Mover");
+                intent.putExtra(RouteDetailView.EXTRA_ROUTE_NAME, mainViewPresenter.getTrainRouteName(mainViewPresenter.getTrainCompanyName(position, context), context));
                 startActivity(intent);
             } else {
                 Intent transitionIntent = new Intent(MainView.this, CompanyView.class);

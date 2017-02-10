@@ -35,6 +35,18 @@ public class BusCompanyData {
         return (list);
     }
 
+    public String getTrainRouteName(String companyName) {
+        if(companyName.equals("Detroit Transportation Corporation")) {
+            return "People Mover";
+        } else {
+            return null;
+        }
+    }
+
+    public String getTrainCompanyName(int position) {
+        return placeNameArray[position];
+    }
+
     public boolean isTrain(int position) {
         for(int i = 0; i < placeNameArray.length; i++) {
             if(placeNameArray[i].equals("Detroit Transportation Corporation")) {

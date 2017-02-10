@@ -32,4 +32,14 @@ public class Repository {
         BusCompanyData busCompanyData = new BusCompanyData(context);
         return busCompanyData.isTrain(position);
     }
+
+    public String getTrainRouteName(String companyName, Context context) {
+        BusCompanyData busCompanyData = new BusCompanyData(context);
+        return busCompanyData.getTrainRouteName(companyName);
+    }
+
+    public String getTrainCompanyName(int position, Context context) {
+        BusCompanyData busCompanyData = new BusCompanyData(context);
+        return busCompanyData.getTrainCompanyName(position);
+    }
 }
