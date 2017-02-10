@@ -5,7 +5,7 @@ import android.database.Cursor;
 
 import dfreemanRIIS.ETADetroit.interactor.GetAllRouteInteractor;
 
-public class CompnayViewPresetner {
+public class CompanyViewPresetner {
 
     public Cursor getAllRoute(String companyName, Context context) {
         GetAllRouteInteractor getAllRouteInteractor = new GetAllRouteInteractor();

@@ -22,7 +22,7 @@ import dfreemanRIIS.ETADetroit.adapters.TodoCursorAdapter;
 import dfreemanRIIS.ETADetroit.adapters.TransitionAdapter;
 import dfreemanRIIS.ETADetroit.entity.BusCompany;
 import dfreemanRIIS.ETADetroit.entity.BusCompanyData;
-import dfreemanRIIS.ETADetroit.presenter.CompnayViewPresetner;
+import dfreemanRIIS.ETADetroit.presenter.CompanyViewPresetner;
 import dfreemanRIIS.ETADetroit.viewEntity.CompanyViewEntity;
 
 public class CompanyView extends Activity implements CompanyViewEntity {
@@ -96,7 +96,7 @@ public class CompanyView extends Activity implements CompanyViewEntity {
     }
 
     public void getAllRoutes() {
-        CompnayViewPresetner presenter = new CompnayViewPresetner();
+        CompanyViewPresetner presenter = new CompanyViewPresetner();
         allRoutes = presenter.getAllRoute(mBusCompany.name, this);
 
         CursorAdapter listAdapter = new TodoCursorAdapter(this, allRoutes);
