@@ -9,10 +9,8 @@ import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.util.Pair;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toolbar;
 
 import dfreemanRIIS.ETADetroit.R;
 import dfreemanRIIS.ETADetroit.interactor.GetCompanyInteractor;
@@ -30,17 +28,17 @@ public class MainViewPresenter {
         return getCompanyInteractor.getCompanies(context);
     }
 
-    public boolean isTrain(int position, Context context) {
+    private boolean isTrain(int position, Context context) {
         IsTrainInteractor isTrainInteractor = new IsTrainInteractor();
         return isTrainInteractor.isTrain(position, context);
     }
 
-    public String getTrainRouteName(String companyName, Context context) {
+    private String getTrainRouteName(String companyName, Context context) {
         GetTrainRouteNameInteractor getTrainRouteNameInteractor = new GetTrainRouteNameInteractor();
         return getTrainRouteNameInteractor.getTrainRouteName(companyName, context);
     }
 
-    public String getTrainCompanyName(int position, Context context) {
+    private String getTrainCompanyName(int position, Context context) {
         GetTrainCompanyNameInteractor getTrainCompanyNameInteractor = new GetTrainCompanyNameInteractor();
         return getTrainCompanyNameInteractor.getTrainCompanyName(position, context);
     }
@@ -55,8 +53,6 @@ public class MainViewPresenter {
             transitionIntent.putExtra(CompanyView.EXTRA_PARAM_ID, position);
             ImageView placeImage = (ImageView) v.findViewById(R.id.placeImage);
             LinearLayout placeNameHolder = (LinearLayout) v.findViewById(R.id.placeNameHolder);
-            View navigationBar = v.findViewById(android.R.id.navigationBarBackground);
-            View statusBar = v.findViewById(android.R.id.statusBarBackground);
             Pair<View, String> imagePair = Pair.create((View) placeImage, "tImage");
             Pair<View, String> holderPair = Pair.create((View) placeNameHolder, "tNameHolder");
             ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity)mainViewContext, imagePair, holderPair);

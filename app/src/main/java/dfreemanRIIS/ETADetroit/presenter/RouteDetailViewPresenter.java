@@ -14,12 +14,12 @@ import dfreemanRIIS.ETADetroit.view.RouteDetailView;
 
 public class RouteDetailViewPresenter {
 
-    public Cursor getRouteDetails(String routeName, Context context) {
+    private Cursor getRouteDetails(String routeName, Context context) {
         GetRouteDetailInteractor getRouteDetailInteractor = new GetRouteDetailInteractor();
         return getRouteDetailInteractor.getRouteDetails(routeName, context);
     }
 
-    public Cursor getRouteStops(String route_id, Context context) {
+    private Cursor getRouteStops(String route_id, Context context) {
         GetRouteStopsInteractor getRouteStopsInteractor = new GetRouteStopsInteractor();
         return getRouteStopsInteractor.getRouteStops(route_id, context);
     }
