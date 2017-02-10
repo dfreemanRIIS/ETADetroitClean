@@ -2,20 +2,13 @@ package dfreemanRIIS.ETADetroit.view;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.support.v4.util.Pair;
 import android.widget.Toolbar;
 
 import dfreemanRIIS.ETADetroit.R;
@@ -50,27 +43,7 @@ public class MainView extends Activity {
         @Override
         public void onItemClick(View v, int position) {
             MainViewPresenter mainViewPresenter = new MainViewPresenter();
-            if(mainViewPresenter.isTrain(position, context)) {
-                Intent intent = new Intent(MainView.this, RouteDetailView.class);
-                intent.putExtra(RouteDetailView.EXTRA_ROUTE_NAME, mainViewPresenter.getTrainRouteName(mainViewPresenter.getTrainCompanyName(position, context), context));
-                startActivity(intent);
-            } else {
-                Intent transitionIntent = new Intent(MainView.this, CompanyView.class);
-                transitionIntent.putExtra(CompanyView.EXTRA_PARAM_ID, position);
-                ImageView placeImage = (ImageView) v.findViewById(R.id.placeImage);
-                LinearLayout placeNameHolder = (LinearLayout) v.findViewById(R.id.placeNameHolder);
-                View navigationBar = findViewById(android.R.id.navigationBarBackground);
-                View statusBar = findViewById(android.R.id.statusBarBackground);
-                Pair<View, String> imagePair = Pair.create((View) placeImage, "tImage");
-                Pair<View, String> holderPair = Pair.create((View) placeNameHolder, "tNameHolder");
-                Pair<View, String> navPair = Pair.create(navigationBar,
-                        Window.NAVIGATION_BAR_BACKGROUND_TRANSITION_NAME);
-                Pair<View, String> statusPair = Pair.create(statusBar, Window.STATUS_BAR_BACKGROUND_TRANSITION_NAME);
-                Pair<View, String> toolbarPair = Pair.create((View) toolbar, "tActionBar");
-                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(MainView.this,
-                        imagePair, holderPair, navPair, statusPair, toolbarPair);
-                ActivityCompat.startActivity(MainView.this, transitionIntent, options.toBundle());
-            }
+            mainViewPresenter.present(context, v, position, toolbar, MainView.this);
         }
     };
     
