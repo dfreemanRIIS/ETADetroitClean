@@ -2,7 +2,6 @@ package dfreemanRIIS.ETADetroit.presenter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CursorAdapter;
@@ -14,14 +13,9 @@ import dfreemanRIIS.ETADetroit.view.RouteDetailView;
 
 public class CompanyViewPresetner {
 
-    private Cursor getAllRoute(String companyName, Context context) {
-        GetAllRouteInteractor getAllRouteInteractor = new GetAllRouteInteractor();
-        return getAllRouteInteractor.getAllRoute(companyName, context);
-    }
-
     public void getAllRoutes(final CompanyView companyView, Context context) {
-        CompanyView.allRoutes = getAllRoute(CompanyView.mBusCompany.name, context);
-
+        GetAllRouteInteractor getAllRouteInteractor = new GetAllRouteInteractor();
+        CompanyView.allRoutes = getAllRouteInteractor.getAllRoute(CompanyView.mBusCompany.name, context);
         CursorAdapter listAdapter = new TodoCursorAdapter(context, CompanyView.allRoutes);
 
         CompanyView.mList.setAdapter(listAdapter);

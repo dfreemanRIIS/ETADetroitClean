@@ -3,7 +3,6 @@ package dfreemanRIIS.ETADetroit.presenter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.util.Pair;
@@ -13,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import dfreemanRIIS.ETADetroit.R;
-import dfreemanRIIS.ETADetroit.interactor.GetCompanyInteractor;
 import dfreemanRIIS.ETADetroit.interactor.GetTrainCompanyNameInteractor;
 import dfreemanRIIS.ETADetroit.interactor.GetTrainRouteNameInteractor;
 import dfreemanRIIS.ETADetroit.interactor.IsTrainInteractor;
@@ -23,30 +21,14 @@ import dfreemanRIIS.ETADetroit.view.RouteDetailView;
 
 public class MainViewPresenter {
 
-    public Cursor getCompanies(Context context) {
-        GetCompanyInteractor getCompanyInteractor = new GetCompanyInteractor();
-        return getCompanyInteractor.getCompanies(context);
-    }
-
-    private boolean isTrain(int position, Context context) {
-        IsTrainInteractor isTrainInteractor = new IsTrainInteractor();
-        return isTrainInteractor.isTrain(position, context);
-    }
-
-    private String getTrainRouteName(String companyName, Context context) {
-        GetTrainRouteNameInteractor getTrainRouteNameInteractor = new GetTrainRouteNameInteractor();
-        return getTrainRouteNameInteractor.getTrainRouteName(companyName, context);
-    }
-
-    private String getTrainCompanyName(int position, Context context) {
-        GetTrainCompanyNameInteractor getTrainCompanyNameInteractor = new GetTrainCompanyNameInteractor();
-        return getTrainCompanyNameInteractor.getTrainCompanyName(position, context);
-    }
-
     public void present(Context context, View v, int position, Context mainViewContext) {
-        if (isTrain(position, context)) {
+        IsTrainInteractor isTrainInteractor = new IsTrainInteractor();
+        GetTrainRouteNameInteractor getTrainRouteNameInteractor = new GetTrainRouteNameInteractor();
+        GetTrainCompanyNameInteractor getTrainCompanyNameInteractor = new GetTrainCompanyNameInteractor();
+
+        if (isTrainInteractor.isTrain(position, context)) {
             Intent intent = new Intent(mainViewContext, RouteDetailView.class);
-            intent.putExtra(RouteDetailView.EXTRA_ROUTE_NAME, getTrainRouteName(getTrainCompanyName(position, context), context));
+            intent.putExtra(RouteDetailView.EXTRA_ROUTE_NAME, getTrainRouteNameInteractor.getTrainRouteName(getTrainCompanyNameInteractor.getTrainCompanyName(position, context), context));
             context.startActivity(intent);
         } else {
             Intent transitionIntent = new Intent(mainViewContext, CompanyView.class);
