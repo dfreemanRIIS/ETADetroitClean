@@ -36,10 +36,13 @@ public class BusCompanyData {
     }
 
     public boolean isTrain(int position) {
-        if (position == 3) {
-            return true;
-        } else {
-            return false;
+        for(int i = 0; i < placeNameArray.length; i++) {
+            if(placeNameArray[i].equals("Detroit Transportation Corporation")) {
+                if(position == i) {
+                    return true;
+                }
+            }
         }
+        return false;
     }
 }
