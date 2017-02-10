@@ -4,14 +4,14 @@ import android.content.Context;
 import android.database.Cursor;
 import java.util.ArrayList;
 
-import dfreemanRIIS.ETADetroit.presenter.Presenter;
+import dfreemanRIIS.ETADetroit.presenter.MainViewPresenter;
 
 public class BusCompanyData {
 
     private final String[] placeNameArray = new String[4];
 
     public BusCompanyData(Context context) {
-        Presenter presenter = new Presenter();
+        MainViewPresenter presenter = new MainViewPresenter();
         Cursor companyCursor = presenter.getCompanies(context);
 
         if(companyCursor.moveToFirst()) {

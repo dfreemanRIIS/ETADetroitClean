@@ -9,7 +9,7 @@ import android.widget.TextView;
 import android.database.Cursor;
 
 import dfreemanRIIS.ETADetroit.R;
-import dfreemanRIIS.ETADetroit.presenter.Presenter;
+import dfreemanRIIS.ETADetroit.presenter.RouteDetailViewPresenter;
 import dfreemanRIIS.ETADetroit.viewEntity.RouteDetailViewEntity;
 
 public class RouteDetailView extends Activity implements RouteDetailViewEntity {
@@ -25,7 +25,7 @@ public class RouteDetailView extends Activity implements RouteDetailViewEntity {
     }
 
     public void setup() {
-        Presenter presenter = new Presenter();
+        RouteDetailViewPresenter presenter = new RouteDetailViewPresenter();
         String thisRoute = (String)getIntent().getExtras().get(EXTRA_ROUTE_NAME);
         Cursor details = presenter.getRouteDetails(thisRoute, this);
 
