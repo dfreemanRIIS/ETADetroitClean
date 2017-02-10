@@ -1,6 +1,7 @@
 package dfreemanRIIS.ETADetroit.view;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -19,6 +20,7 @@ import android.widget.Toolbar;
 
 import dfreemanRIIS.ETADetroit.R;
 import dfreemanRIIS.ETADetroit.adapters.CompanyListAdapter;
+import dfreemanRIIS.ETADetroit.presenter.MainViewPresenter;
 
 public class MainView extends Activity {
 
@@ -26,11 +28,13 @@ public class MainView extends Activity {
     private boolean isListView;
     private StaggeredGridLayoutManager mStaggeredLayoutManager;
     private Toolbar toolbar;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        context = this;
         isListView = true;
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.list);
         mStaggeredLayoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
@@ -45,7 +49,8 @@ public class MainView extends Activity {
     private final CompanyListAdapter.OnItemClickListener onItemClickListener = new CompanyListAdapter.OnItemClickListener() {
         @Override
         public void onItemClick(View v, int position) {
-            if(position == 3) {
+            MainViewPresenter mainViewPresenter = new MainViewPresenter();
+            if(mainViewPresenter.isTrain(position, context)) {
                 Intent intent = new Intent(MainView.this, RouteDetailView.class);
                 intent.putExtra(RouteDetailView.EXTRA_ROUTE_NAME, "People Mover");
                 startActivity(intent);

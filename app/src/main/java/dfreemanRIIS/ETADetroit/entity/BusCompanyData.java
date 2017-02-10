@@ -34,4 +34,12 @@ public class BusCompanyData {
         }
         return (list);
     }
+
+    public boolean isTrain(int position) {
+        if (position == 3) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

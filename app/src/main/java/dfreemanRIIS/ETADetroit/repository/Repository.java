@@ -3,6 +3,7 @@ package dfreemanRIIS.ETADetroit.repository;
 import android.content.Context;
 import android.database.Cursor;
 
+import dfreemanRIIS.ETADetroit.entity.BusCompanyData;
 import dfreemanRIIS.ETADetroit.entity.DatabaseHelper;
 
 public class Repository {
@@ -25,5 +26,10 @@ public class Repository {
     public Cursor getAllRoute(String companyName, Context context) {
         DatabaseHelper databaseHelper = new DatabaseHelper(context);
         return databaseHelper.getAllRoutes(companyName);
+    }
+
+    public boolean isTrain(int position, Context context) {
+        BusCompanyData busCompanyData = new BusCompanyData(context);
+        return busCompanyData.isTrain(position);
     }
 }
