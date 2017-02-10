@@ -25,8 +25,7 @@ public class RouteDetailViewPresenter {
     }
 
     public void setup(Context context, String thisRoute, RouteDetailView v) {
-        RouteDetailViewPresenter presenter = new RouteDetailViewPresenter();
-        Cursor details = presenter.getRouteDetails(thisRoute, context);
+        Cursor details = getRouteDetails(thisRoute, context);
 
         if(details.moveToFirst()) {
             TextView textView1 = (TextView)v.findViewById(R.id.listDetails);
@@ -39,7 +38,7 @@ public class RouteDetailViewPresenter {
             textView1.setText(placeHolder1);
         }
 
-        Cursor stops = presenter.getRouteStops(details.getString(3), context);
+        Cursor stops = getRouteStops(details.getString(3), context);
         CursorAdapter listAdapter = new SimpleCursorAdapter(context,
                 android.R.layout.simple_list_item_1,
                 stops,
