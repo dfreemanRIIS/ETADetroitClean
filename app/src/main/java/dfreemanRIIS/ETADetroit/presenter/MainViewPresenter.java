@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.util.Pair;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
@@ -19,6 +20,7 @@ import dfreemanRIIS.ETADetroit.interactor.GetTrainCompanyNameInteractor;
 import dfreemanRIIS.ETADetroit.interactor.GetTrainRouteNameInteractor;
 import dfreemanRIIS.ETADetroit.interactor.IsTrainInteractor;
 import dfreemanRIIS.ETADetroit.view.CompanyView;
+import dfreemanRIIS.ETADetroit.view.MainView;
 import dfreemanRIIS.ETADetroit.view.RouteDetailView;
 
 public class MainViewPresenter {
@@ -63,6 +65,21 @@ public class MainViewPresenter {
             Pair<View, String> toolbarPair = Pair.create((View) toolbar, "tActionBar");
             ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity)mainViewContext, imagePair);
             ActivityCompat.startActivity(mainViewContext, transitionIntent, options.toBundle());
+        }
+    }
+
+    public static void toggle() {
+        MenuItem item = MainView.menu.findItem(R.id.action_toggle);
+        if (MainView.isListView) {
+            MainView.mStaggeredLayoutManager.setSpanCount(2);
+            item.setIcon(R.drawable.ic_action_list);
+            item.setTitle("Show as list");
+            MainView.isListView = false;
+        } else {
+            MainView.mStaggeredLayoutManager.setSpanCount(1);
+            item.setIcon(R.drawable.ic_action_grid);
+            item.setTitle("Show as grid");
+            MainView.isListView = true;
         }
     }
 }
