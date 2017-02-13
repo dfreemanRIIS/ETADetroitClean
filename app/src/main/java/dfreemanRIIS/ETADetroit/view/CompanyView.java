@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.graphics.Palette;
 import android.transition.Transition;
 import android.view.View;
@@ -45,7 +46,7 @@ public class CompanyView extends Activity {
         mTitle = (TextView) findViewById(R.id.textView);
         mTitleHolder = (LinearLayout) findViewById(R.id.placeNameHolder);
         mRevealView = (LinearLayout) findViewById(R.id.llEditTextHolder);
-        defaultColor = getResources().getColor(R.color.primary_dark);
+        defaultColor = ContextCompat.getColor(this, R.color.primary_dark);
         mRevealView.setVisibility(View.INVISIBLE);
 
         CompanyViewPresetner companyViewPresetner = new CompanyViewPresetner();

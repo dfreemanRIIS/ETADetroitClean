@@ -3,6 +3,7 @@ package dfreemanRIIS.ETADetroit.adapters;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -45,7 +46,7 @@ public class CompanyListAdapter extends RecyclerView.Adapter<CompanyListAdapter.
         @Override
         public void onClick(View v) {
             if (mItemClickListener != null) {
-                mItemClickListener.onItemClick(itemView, getPosition());
+                mItemClickListener.onItemClick(itemView, getLayoutPosition());
             }
         }
 
@@ -81,7 +82,7 @@ public class CompanyListAdapter extends RecyclerView.Adapter<CompanyListAdapter.
 
         Palette.generateAsync(photo, new Palette.PaletteAsyncListener() {
           public void onGenerated(Palette palette) {
-            int bgColor = palette.getMutedColor(mContext.getResources().getColor(android.R.color.black));
+            int bgColor = palette.getMutedColor(ContextCompat.getColor(mContext, android.R.color.black));
             holder.placeNameHolder.setBackgroundColor(bgColor);
           }
         });

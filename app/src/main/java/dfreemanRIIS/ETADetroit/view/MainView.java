@@ -50,7 +50,9 @@ public class MainView extends Activity {
     private void setUpActionBar() {
         if (toolbar != null) {
             setActionBar(toolbar);
-            getActionBar().setDisplayHomeAsUpEnabled(false);
+            if(getActionBar() != null) {
+                getActionBar().setDisplayHomeAsUpEnabled(false);
+            }
             getActionBar().setDisplayShowTitleEnabled(true);
             getActionBar().setElevation(7);
         }
@@ -60,7 +62,7 @@ public class MainView extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_main, menu);
-        this.menu = menu;
+        MainView.menu = menu;
         return true;
     }
 
